@@ -169,7 +169,11 @@ helm install my-superset superset/superset
 | supersetCeleryFlower.startupProbe.timeoutSeconds | int | `1` |  |
 | supersetCeleryFlower.topologySpreadConstraints | list | `[]` | TopologySpreadConstrains to be added to supersetCeleryFlower deployments |
 | supersetNode.affinity | object | `{}` | Affinity to be added to supersetNode deployment |
-| supersetNode.autoScale | object | `{"averageUtilizationCPU":75,"averageUtilizationMEMORY":75,"enabled":false,"maxReplicas":5,"minReplicas":1}` | HPA - Horizontal Pod Autoscaling - enable this feature to scale In/Out pods horizontally in Kubernetes Autoscaler depends on the AvgCPU and AvgMemory Utilization and Automatically Scale In & Out based on the "minReplica" and "maxReplica" respectively  For HPA to pick the pod metrics, it requires pod "resources: {}" |
+| supersetNode.autoScale.averageUtilizationCPU | int | `75` | Average CPU Utilization of Horizontal Pod Autoscaling for supersetNode deployment |
+| supersetNode.autoScale.averageUtilizationMEMORY | int | `75` | Average Memory Utilization of Horizontal Pod Autoscaling for supersetNode deployment |
+| supersetNode.autoScale.enabled | bool | `false` |  |
+| supersetNode.autoScale.maxReplicas | int | `5` | Maximum Replicas of Horizontal Pod Autoscaling for supersetNode deployment |
+| supersetNode.autoScale.minReplicas | int | `1` | Minimum Replicas of Horizontal Pod Autoscaling for supersetNode deployment |
 | supersetNode.command | list | See `values.yaml` | Startup command |
 | supersetNode.connections.db_host | string | `"{{ .Release.Name }}-postgresql"` |  |
 | supersetNode.connections.db_name | string | `"superset"` |  |
@@ -258,7 +262,11 @@ helm install my-superset superset/superset
 | supersetWebsockets.strategy | object | `{}` |  |
 | supersetWebsockets.topologySpreadConstraints | list | `[]` | TopologySpreadConstrains to be added to supersetWebsockets deployments |
 | supersetWorker.affinity | object | `{}` | Affinity to be added to supersetWorker deployment |
-| supersetWorker.autoScale | object | `{"averageUtilizationCPU":75,"averageUtilizationMEMORY":75,"enabled":false,"maxReplicas":5,"minReplicas":1}` | HPA - Horizontal Pod Autoscaling - enable this feature to scale In/Out pods horizontally in Kubernetes Autoscaler depends on the AvgCPU and AvgMemory Utilization and Automatically Scale In & Out based on the "minReplica" and "maxReplica" respectively For HPA to pick the pod metrics, it requires pod "resources: {}" |
+| supersetWorker.autoScale.averageUtilizationCPU | int | `75` | Average CPU Utilization of Horizontal Pod Autoscaling for supersetWorker deployment |
+| supersetWorker.autoScale.averageUtilizationMEMORY | int | `75` | Average Memory Utilization of Horizontal Pod Autoscaling for supersetWorker deployment |
+| supersetWorker.autoScale.enabled | bool | `false` |  |
+| supersetWorker.autoScale.maxReplicas | int | `5` | Maximum Replicas of Horizontal Pod Autoscaling for supersetWorker deployment |
+| supersetWorker.autoScale.minReplicas | int | `1` | Minimum Replicas of Horizontal Pod Autoscaling for supersetWorker deployment |
 | supersetWorker.command | list | a `celery worker` command | Worker startup command |
 | supersetWorker.containerSecurityContext | object | `{}` |  |
 | supersetWorker.deploymentAnnotations | object | `{}` | Annotations to be added to supersetWorker deployment |
